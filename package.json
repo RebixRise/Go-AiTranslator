@@ -1,0 +1,94 @@
+{
+  "name": "go-aitranslator",
+  "version": "1.0.0",
+  "description": "🚀 A modern, intelligent Chrome extension for instant AI-powered translation between Arabic and English",
+  "main": "popup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"✅ Building extension for production...\" && echo \"📦 Extension ready for deployment\"",
+    "dev": "echo \"🔧 Development mode - Load unpacked in Chrome at chrome://extensions/\"",
+    "package": "echo \"📦 Packaging for Chrome Web Store...\"",
+    "lint": "echo \"🔍 Linting code...\"",
+    "validate": "echo \"✅ Validating manifest and files...\""
+  },
+  "keywords": [
+    "chrome-extension",
+    "translation",
+    "ai",
+    "gemini",
+    "arabic",
+    "english",
+    "translator",
+    "google-ai",
+    "manifest-v3",
+    "open-source",
+    "free",
+    "rebixrise",
+    "modern-ui",
+    "productivity"
+  ],
+  "author": {
+    "name": "RebixRise",
+    "url": "https://github.com/RebixRise",
+    "email": "support@rebixrise.com"
+  },
+  "contributors": [
+    {
+      "name": "RebixRise Team",
+      "url": "https://github.com/RebixRise"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RebixRise/Go-AiTranslator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RebixRise/Go-AiTranslator/issues",
+    "email": "support@rebixrise.com"
+  },
+  "homepage": "https://github.com/RebixRise/Go-AiTranslator#readme",
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/RebixRise"
+  },
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0",
+    "chrome": ">=88.0.0"
+  },
+  "browserslist": [
+    "Chrome >= 88",
+    "Edge >= 88",
+    "Opera >= 74"
+  ],
+  "extensionInfo": {
+    "manifestVersion": 3,
+    "chromeVersion": "88+",
+    "permissions": [
+      "storage",
+      "contextMenus",
+      "activeTab"
+    ],
+    "features": [
+      "Bi-directional Arabic ↔ English translation",
+      "Google Gemini AI integration",
+      "Modern 2025-style UI/UX",
+      "Auto-copy functionality",
+      "Context menu integration",
+      "Keyboard shortcuts",
+      "Multiple translation modes"
+    ]
+  },
+  "social": {
+    "telegram": "https://t.me/RebixRise",
+    "github": "https://github.com/RebixRise"
+  },
+  "config": {
+    "aiProvider": "Google Gemini 1.5 Flash",
+    "supportedLanguages": ["ar", "en"],
+    "maxCharacters": 5000,
+    "defaultMode": "normal"
+  }
+} 
