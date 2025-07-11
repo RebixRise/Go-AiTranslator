@@ -1,0 +1,101 @@
+{
+  "name": "go-aitranslator",
+  "version": "1.0.0",
+  "description": "🚀 A modern, intelligent Chrome extension for instant AI-powered translation between Arabic and English",
+  "main": "popup.js",
+  "scripts": {
+    "test": "echo \"Running tests...\" && npm run validate",
+    "build": "echo \"✅ Building extension for production...\" && npm run validate && npm run package",
+    "dev": "echo \"🔧 Development mode - Load unpacked in Chrome at chrome://extensions/\"",
+    "package": "echo \"📦 Packaging for Chrome Web Store...\" && zip -r go-aitranslator.zip . -x 'node_modules/*' '*.git*' '*.md'",
+    "lint": "echo \"🔍 Linting code...\" && npm run lint:js && npm run lint:manifest",
+    "lint:js": "echo \"Checking JavaScript syntax...\" && node -c popup.js && node -c background.js && node -c content.js",
+    "lint:manifest": "echo \"Validating manifest.json...\" && node -e \"JSON.parse(require('fs').readFileSync('manifest.json', 'utf8'))\"",
+    "validate": "npm run lint:js && npm run lint:manifest && echo \"✅ Validation complete\"",
+    "clean:console": "node remove-console-logs.js remove",
+    "restore:console": "node remove-console-logs.js restore",
+    "build:production": "npm run validate && npm run clean:console && npm run package && npm run restore:console"
+  },
+  "keywords": [
+    "chrome-extension",
+    "translation",
+    "ai",
+    "gemini",
+    "arabic",
+    "english",
+    "translator",
+    "google-ai",
+    "manifest-v3",
+    "open-source",
+    "free",
+    "rebixrise",
+    "modern-ui",
+    "productivity"
+  ],
+  "author": {
+    "name": "RebixRise",
+    "url": "https://github.com/RebixRise",
+    "email": "support@rebixrise.com"
+  },
+  "contributors": [
+    {
+      "name": "RebixRise Team",
+      "url": "https://github.com/RebixRise"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RebixRise/Go-AiTranslator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RebixRise/Go-AiTranslator/issues",
+    "email": "support@rebixrise.com"
+  },
+  "homepage": "https://github.com/RebixRise/Go-AiTranslator#readme",
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/RebixRise"
+  },
+  "devDependencies": {
+    "web-ext": "^7.8.0"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0",
+    "chrome": ">=88.0.0"
+  },
+  "browserslist": [
+    "Chrome >= 88",
+    "Edge >= 88",
+    "Opera >= 74"
+  ],
+  "extensionInfo": {
+    "manifestVersion": 3,
+    "chromeVersion": "88+",
+    "permissions": [
+      "storage",
+      "contextMenus",
+      "activeTab"
+    ],
+    "features": [
+      "Bi-directional Arabic ↔ English translation",
+      "Google Gemini AI integration",
+      "Modern 2025-style UI/UX",
+      "Auto-copy functionality",
+      "Context menu integration",
+      "Keyboard shortcuts",
+      "Multiple translation modes"
+    ]
+  },
+  "social": {
+    "telegram": "https://t.me/RebixRise",
+    "github": "https://github.com/RebixRise"
+  },
+  "config": {
+    "aiProvider": "Google Gemini 1.5 Flash",
+    "supportedLanguages": ["ar", "en"],
+    "maxCharacters": 5000,
+    "defaultMode": "normal"
+  }
+} 

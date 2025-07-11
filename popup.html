@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-AiTranslator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <div class="logo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M12.87 15.07L10.33 12.56L10.36 12.53C12.1 10.59 13.34 8.36 14.07 6H17V4H10V2H8V4H1V6H12.17C11.5 7.92 10.44 9.75 9 11.35C8.07 10.32 7.3 9.19 6.69 8H4.69C5.42 9.63 6.42 11.17 7.67 12.56L2.58 17.58L4 19L9 14L12.11 17.11L12.87 15.07ZM18.5 10H16.5L12 22H14L15.12 19H19.87L21 22H23L18.5 10ZM15.88 17L17.5 12.67L19.12 17H15.88Z" fill="currentColor"/>
+                </svg>
+                <h1>Go-AiTranslator</h1>
+            </div>
+            
+            <div class="header-controls">
+                <select id="translationMode" class="translation-mode">
+                    <option value="normal">🔄 Normal</option>
+                    <option value="summarize">📝 Summarize</option>
+                    <option value="improve">✨ Improve</option>
+                </select>
+                
+                <div class="auto-copy-control">
+                    <span class="auto-copy-label">📋</span>
+                    <label class="toggle-switch compact" for="autoCopyCheckbox">
+                        <input type="checkbox" id="autoCopyCheckbox" />
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <button id="aboutBtn" class="about-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2C6.48 2 2 6.48 2 12S6.48 22 12 22S22 17.52 22 12S17.52 2 12 2ZM13 17H11V11H13V17ZM13 9H11V7H13V9Z" fill="currentColor"/>
+                    </svg>
+                </button>
+                
+                <button id="settingsBtn" class="settings-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path d="M19.14 12.94C19.18 12.64 19.2 12.33 19.2 12S19.18 11.36 19.14 11.06L21.16 9.48C21.34 9.34 21.39 9.07 21.28 8.87L19.36 5.55C19.24 5.33 18.99 5.26 18.77 5.33L16.38 6.29C15.88 5.91 15.35 5.59 14.76 5.35L14.4 2.81C14.36 2.57 14.16 2.4 13.92 2.4H10.08C9.84 2.4 9.64 2.57 9.6 2.81L9.24 5.35C8.65 5.59 8.12 5.92 7.62 6.29L5.23 5.33C5.01 5.26 4.76 5.33 4.64 5.55L2.72 8.87C2.61 9.07 2.66 9.34 2.84 9.48L4.86 11.06C4.82 11.36 4.8 11.69 4.8 12S4.82 12.64 4.86 12.94L2.84 14.52C2.66 14.66 2.61 14.93 2.72 15.13L4.64 18.45C4.76 18.67 5.01 18.74 5.23 18.67L7.62 17.71C8.12 18.09 8.65 18.41 9.24 18.65L9.6 21.19C9.64 21.43 9.84 21.6 10.08 21.6H13.92C14.16 21.6 14.36 21.43 14.4 21.19L14.76 18.65C15.35 18.41 15.88 18.09 16.38 17.71L18.77 18.67C18.99 18.74 19.24 18.67 19.36 18.45L21.28 15.13C21.39 14.93 21.34 14.66 21.16 14.52L19.14 12.94ZM12 15.6C10.02 15.6 8.4 13.98 8.4 12S10.02 8.4 12 8.4S15.6 10.02 15.6 12S13.98 15.6 12 15.6Z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="input-panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.89 22 5.99 22H18C19.1 22 20 21.1 20 20V8L14 2ZM18 20H6V4H13V9H18V20Z" fill="currentColor"/>
+                        </svg>
+                        <span>Original Text</span>
+                    </div>
+                    <span class="char-count"><span id="charCount">0</span>/5000</span>
+                </div>
+                
+                <div class="textarea-container">
+                    <textarea 
+                        id="inputText" 
+                        placeholder="Type or paste your text here..."
+                        maxlength="5000"
+                    ></textarea>
+                    <div class="textarea-actions">
+                        <button id="clearBtn" class="action-btn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="currentColor"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <button id="translateBtn" class="translate-btn" disabled>
+                    <div class="btn-content">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M12.87 15.07L10.33 12.56L10.36 12.53C12.1 10.59 13.34 8.36 14.07 6H17V4H10V2H8V4H1V6H12.17C11.5 7.92 10.44 9.75 9 11.35C8.07 10.32 7.3 9.19 6.69 8H4.69C5.42 9.63 6.42 11.17 7.67 12.56L2.58 17.58L4 19L9 14L12.11 17.11L12.87 15.07ZM18.5 10H16.5L12 22H14L15.12 19H19.87L21 22H23L18.5 10ZM15.88 17L17.5 12.67L19.12 17H15.88Z" fill="currentColor"/>
+                        </svg>
+                        <span>Translate</span>
+                    </div>
+                    <div class="btn-loading" id="loadingSpinner">
+                        <div class="spinner"></div>
+                    </div>
+                </button>
+            </div>
+
+            <div class="divider">
+                <div class="divider-line"></div>
+                <div class="divider-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M16.01 11H4V13H16.01V16L20 12L16.01 8V11Z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div class="divider-line"></div>
+            </div>
+
+            <div class="output-panel" id="outputPanel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M12.87 15.07L10.33 12.56L10.36 12.53C12.1 10.59 13.34 8.36 14.07 6H17V4H10V2H8V4H1V6H12.17C11.5 7.92 10.44 9.75 9 11.35C8.07 10.32 7.3 9.19 6.69 8H4.69C5.42 9.63 6.42 11.17 7.67 12.56L2.58 17.58L4 19L9 14L12.11 17.11L12.87 15.07ZM18.5 10H16.5L12 22H14L15.12 19H19.87L21 22H23L18.5 10ZM15.88 17L17.5 12.67L19.12 17H15.88Z" fill="currentColor"/>
+                        </svg>
+                        <span>Translation</span>
+                    </div>
+                    <button id="copyBtn" class="action-btn copy-btn" style="display: none;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                            <path d="M16 1H4C2.9 1 2 1.9 2 3V17H4V3H16V1ZM19 5H8C6.9 5 6 5.9 6 7V21C6 22.1 6.9 23 8 23H19C20.1 23 21 22.1 21 21V7C21 5.9 20.1 5 19 5ZM19 21H8V7H19V21Z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="output-container">
+                    <div id="translationResult" class="translation-result">
+                        <div class="empty-state">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                <path d="M12.87 15.07L10.33 12.56L10.36 12.53C12.1 10.59 13.34 8.36 14.07 6H17V4H10V2H8V4H1V6H12.17C11.5 7.92 10.44 9.75 9 11.35C8.07 10.32 7.3 9.19 6.69 8H4.69C5.42 9.63 6.42 11.17 7.67 12.56L2.58 17.58L4 19L9 14L12.11 17.11L12.87 15.07ZM18.5 10H16.5L12 22H14L15.12 19H19.87L21 22H23L18.5 10ZM15.88 17L17.5 12.67L19.12 17H15.88Z" fill="currentColor"/>
+                            </svg>
+                            <p>Enter text to see translation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="settingsModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Settings</h2>
+                    <button id="closeModal" class="close-btn">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="setting-group">
+                        <label for="apiKey">Gemini API Key</label>
+                        <div class="input-group">
+                            <input type="password" id="apiKey" placeholder="Enter your Gemini API key">
+                            <button id="toggleKey" class="toggle-btn">👁️</button>
+                        </div>
+                        <p class="setting-desc">Get your free API key from <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a></p>
+                    </div>
+                    <div class="setting-group" style="margin-top: 16px;">
+                        <label for="openRouterKey">OpenRouter API Key</label>
+                        <div class="input-group">
+                            <input type="password" id="openRouterKey" placeholder="Enter your OpenRouter API key">
+                            <button id="toggleOpenKey" class="toggle-btn">👁️</button>
+                        </div>
+                        <p class="setting-desc">Create a free key from <a href="https://openrouter.ai/keys" target="_blank">openrouter.ai/keys</a></p>
+                    </div>
+                    <div class="setting-group" style="margin-top:16px;">
+                        <label>Translation Languages</label>
+                        <div class="input-group" style="display:flex;flex-direction:column;gap:6px;">
+                            <input type="text" id="langSearch" placeholder="Search language..." style="padding:6px 8px;border:1px solid #e2e8f0;border-radius:6px;" />
+                            <div style="display:flex;align-items:center;gap:4px;">
+                                <select id="sourceLang" style="flex:1;"></select>
+                                <span>→</span>
+                                <select id="targetLang" style="flex:1;"></select>
+                            </div>
+                        </div>
+                        <p class="setting-desc">Select source and target languages</p>
+                    </div>
+                    <div class="setting-group" style="margin-top:16px;">
+                        <label>Pop-up translations</label>
+                        <p class="setting-desc" style="margin-bottom:6px;">When I select a word or phrase:</p>
+                        <div class="radio-group" style="display:flex;flex-direction:column;gap:8px;">
+                            <label class="radio-option" style="display:flex;align-items:flex-start;gap:6px;">
+                                <input type="radio" name="popupMode" value="icon" checked style="margin-top:2px;">
+                                <span>Display icon that I can click to show pop-up.</span>
+                            </label>
+                            <label class="radio-option" style="display:flex;flex-direction:column;">
+                                <span style="display:flex;align-items:flex-start;gap:6px;">
+                                    <input type="radio" name="popupMode" value="auto" style="margin-top:2px;">
+                                    <span>Immediately display popup.</span>
+                                </span>
+                                <span class="setting-desc" style="margin-left:22px;">Any text selected in your browser is sent to the AI server to determine if a translation should be displayed.</span>
+                            </label>
+                            <label class="radio-option" style="display:flex;flex-direction:column;">
+                                <span style="display:flex;align-items:flex-start;gap:6px;">
+                                    <input type="radio" name="popupMode" value="none" style="margin-top:2px;">
+                                    <span>Don't display icon or pop-up.</span>
+                                </span>
+                                <span class="setting-desc" style="margin-left:22px;">You can still translate selected text by clicking the extension icon.</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button id="saveSettings" class="save-btn">Save Settings</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="aboutModal" class="modal" style="display: none;">
+            <div class="modal-content about-modal">
+                <div class="modal-header">
+                    <h2>About Go-AiTranslator</h2>
+                    <button id="closeAboutModal" class="close-btn">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="about-content">
+                        <div class="about-logo">
+                            <div class="rebix-logo">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" fill="url(#rebixGradient)"/>
+                                    <defs>
+                                        <linearGradient id="rebixGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#667eea"/>
+                                            <stop offset="100%" style="stop-color:#764ba2"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="about-title">
+                                <h3>RebixRise</h3>
+                                <span class="about-subtitle">Innovative Tools for Productivity</span>
+                            </div>
+                        </div>
+                        
+                        <div class="about-info">
+                            <p class="about-description en">
+                                RebixRise is a technology company focused on creating innovative tools that enhance productivity and streamline digital workflows. Our mission is to develop intelligent solutions that save time and simplify complex tasks for users worldwide.
+                            </p>
+                            <p class="about-description ar">
+                                RebixRise هي شركة تكنولوجية تركّز على ابتكار أدوات ذكية تعزز الإنتاجية وتبسط سير العمل الرقمي. مهمتنا هي تطوير حلول ذكية توفّر الوقت وتسهّل المهام المعقدة للمستخدمين حول العالم.
+                            </p>
+                            
+                            <div class="feature-highlights">
+                                <div class="feature-item">
+                                    <span class="feature-icon">🤖</span>
+                                    <span>AI-Powered Translation</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">🔄</span>
+                                    <span>Arabic ↔ English</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">🆓</span>
+                                    <span>Free & Open Source</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">🎨</span>
+                                    <span>Modern 2025 Design</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="about-footer">
+                            <div class="version-info">
+                                <span class="version">Version 1.0.0</span>
+                                <span class="separator">•</span>
+                                <span class="license">MIT License</span>
+                            </div>
+                            
+                            <div class="social-links">
+                                <a href="https://t.me/RebixRise" target="_blank" class="social-link telegram">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" fill="currentColor"/>
+                                    </svg>
+                                    <span>Telegram</span>
+                                </a>
+                                <a href="https://github.com/RebixRise/Go-AiTranslator" target="_blank" class="social-link github">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" fill="currentColor"/>
+                                    </svg>
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                            
+                            <div class="copyright">
+                                <p>© 2025 RebixRise. Made with ❤️ for the community.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toast" class="toast" style="display: none;"></div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html> 
