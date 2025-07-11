@@ -86,7 +86,7 @@ cd Go-AiTranslator
 
 1. **Open Go-AiTranslator**
    - Click the extension icon in your toolbar
-   - Or use keyboard shortcut `Ctrl+Shift+T` (coming soon)
+   - Or use keyboard shortcut `Ctrl+Shift+T` *(coming soon)*
 
 2. **Access Settings**
    - Click the gear icon ⚙️ in the top-right

@@ -28,14 +28,14 @@
 ### 🎨 **Modern UI/UX**
 - **2025-style Design**: Glassmorphism, gradients, and smooth animations
 - **Responsive Layout**: Optimized for all screen sizes
-- **Dark/Light Mode**: Adaptive interface (coming soon)
+- **Dark/Light Mode**: Adaptive interface *(coming soon)*
 - **Professional Typography**: Tajawal font for beautiful Arabic text
 
 ### ⚡ **Productivity Features**
 - **One-Click Auto Copy**: Toggle automatic clipboard copying
 - **Keyboard Shortcuts**: `Ctrl+Enter` to translate, `Ctrl+K` for settings
 - **Context Menu**: Right-click to translate selected text
-- **Character Counter**: Real-time character count with visual indicators
+- **Character Counter**: Real-time character count with visual indicators (limit: 5000)
 - **Toast Notifications**: Elegant feedback messages
 
 ### 🔧 **Developer-Friendly**
@@ -145,8 +145,8 @@ Currently supported languages:
 
 ## 📊 Roadmap
 
-### v2.0 (Coming Soon)
-- [ ] Dark/Light mode toggle
+### v2.0 (Planned)
+- [ ] Dark/Light mode toggle *(UI groundwork present, logic coming soon)*
 - [ ] More AI models (Claude, GPT)
 - [ ] Offline translation cache
 - [ ] Translation history

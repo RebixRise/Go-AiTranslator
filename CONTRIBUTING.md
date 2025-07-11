@@ -23,7 +23,7 @@ Thank you for your interest in contributing to Go-AiTranslator! This document pr
 ### 💡 Suggesting Features
 
 **Before submitting a feature request:**
-- Check if the feature already exists or is planned
+- Check if the feature already exists or is planned (see [CHANGELOG.md](CHANGELOG.md) and [README.md](README.md))
 - Review existing [feature requests](https://github.com/RebixRise/Go-AiTranslator/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement)
 
 **When submitting a feature request:**
@@ -66,7 +66,7 @@ git checkout -b docs/update-readme
 # 1. Go to chrome://extensions/
 # 2. Enable Developer mode
 # 3. Click "Load unpacked" and select the project folder
-# 4. Test all functionality
+# 4. Test all functionality (translation, modes, context menu, auto-copy, settings)
 ```
 
 #### 5. Commit & Push
