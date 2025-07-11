@@ -4,7 +4,7 @@
 
 ![Go-AiTranslator Logo](icons/icon128.png)
 
-**A modern, intelligent Chrome extension for instant AI-powered translation between Arabic and English**
+**A modern, intelligent Chrome extension for instant AI-powered translation between any two languages you choose**
 
 [![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Coming%20Soon-blue?style=for-the-badge&logo=google-chrome)](https://chrome.google.com/webstore)
 [![GitHub Release](https://img.shields.io/github/v/release/RebixRise/Go-AiTranslator?style=for-the-badge)](https://github.com/RebixRise/Go-AiTranslator/releases)
@@ -17,10 +17,19 @@
 
 ## ✨ Features
 
-### 🎯 **Intelligent Translation**
-- **Bi-directional Translation**: Arabic ↔ English with automatic language detection
-- **Powered by Google Gemini AI**: Advanced AI for context-aware translations
-- **Multiple Translation Modes**:
+### 🌍 **Translate Between Any Languages**
+- **Choose source and target languages from 70+ supported languages**
+- **Not limited to Arabic and English—translate between any two languages**
+- **Smart language search and validation**
+
+### ⚡ **Instant Translation Anywhere**
+- **Translate any selected text on any website instantly**
+- **Pop-up translation icon or auto-popup on selection (like Google Translate)**
+- **Right-click context menu for quick translation**
+
+### 🎯 **Intelligent AI Translation**
+- **Powered by Google Gemini AI and OpenRouter**
+- **Multiple translation modes:**
   - 🔄 **Normal**: Standard translation
   - 📝 **Summarize**: Translate with intelligent summarization
   - ✨ **Improve**: Grammar correction + translation
@@ -30,19 +39,21 @@
 - **Responsive Layout**: Optimized for all screen sizes
 - **Dark/Light Mode**: Adaptive interface *(coming soon)*
 - **Professional Typography**: Tajawal font for beautiful Arabic text
+- **Smart language selection with search**
 
-### ⚡ **Productivity Features**
+### ⚙️ **Advanced Productivity Features**
 - **One-Click Auto Copy**: Toggle automatic clipboard copying
 - **Keyboard Shortcuts**: `Ctrl+Enter` to translate, `Ctrl+K` for settings
-- **Context Menu**: Right-click to translate selected text
 - **Character Counter**: Real-time character count with visual indicators (limit: 5000)
 - **Toast Notifications**: Elegant feedback messages
+- **Settings modal with all options**
 
 ### 🔧 **Developer-Friendly**
 - **Manifest V3**: Latest Chrome extension standards
 - **TypeScript Ready**: Modern ES6+ JavaScript
 - **Modular Architecture**: Clean, maintainable code structure
 - **Error Handling**: Comprehensive error management and logging
+- **Multiple AI providers: Gemini, OpenRouter**
 
 ## 🔧 Installation
 
@@ -78,9 +89,16 @@
 
 ### Basic Translation
 1. Click the extension icon
-2. Type or paste your text (Arabic or English)
-3. Click "Translate" or press `Ctrl+Enter`
-4. Copy the result with one click
+2. Type or paste your text
+3. Select source and target languages from the dropdowns (search supported)
+4. Click "Translate" or press `Ctrl+Enter`
+5. Copy the result with one click
+
+### Instant Website Translation
+- **Select any text on a webpage**
+- **Right-click → "Translate with Go-AiTranslator"**
+- **Or use the floating pop-up icon for instant translation**
+- **Choose pop-up behavior from settings (icon, auto, or none)**
 
 ### Translation Modes
 - **🔄 Normal**: Direct translation
@@ -92,15 +110,10 @@
 - Translations automatically copy to clipboard
 - Perfect for workflow integration
 
-### Context Menu
-- Select any text on a webpage
-- Right-click → "Translate with Go-AiTranslator"
-- Instant popup with translation
-
 ## 🏗️ Technical Stack
 
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript (ES6+)
-- **AI Engine**: Google Gemini 1.5 Flash
+- **AI Engine**: Google Gemini 1.5 Flash, OpenRouter
 - **Architecture**: Chrome Extension Manifest V3
 - **Storage**: Chrome Sync Storage API
 - **Styling**: Modern CSS with CSS Variables
@@ -137,11 +150,9 @@ We welcome contributions from the community! Here's how you can help:
 
 ## 🌐 Internationalization
 
-Currently supported languages:
-- **Arabic** (العربية) - Native support
-- **English** - Native support
-
-*More languages coming soon!*
+- **Supports 70+ languages**
+- **RTL/LTR text handling**
+- **Locale-aware formatting**
 
 ## 📊 Roadmap
 
